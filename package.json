@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "sporting-quotes",
+  "description": "Sporting Quotes Frontend.",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ali Coleman <contact@alicoleman.com>",
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^5.4.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
