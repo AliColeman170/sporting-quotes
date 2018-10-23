@@ -38,7 +38,7 @@ const Layout = ({ children, alt }) => (
             { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'og:site_name', content: 'Sporting Quotes' },
             { name: 'fb:app_id', content: '1899309746988748' },
-            { name: 'twitter:site', content: '@sporting_quote' }
+            { name: 'twitter:site', content: '@sporting_quote' },
           ]}
         >
           <html lang="en" />

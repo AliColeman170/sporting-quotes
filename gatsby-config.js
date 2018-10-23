@@ -36,6 +36,14 @@ module.exports = {
           families: ['Lora:400', 'Open Sans:400,600']
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-amplitude-analytics`,
+      options: {
+        apiKey: process.env.AMPLITUDE_API_KEY,
+        head: false,
+        respectDNT: true,
+      },
+    },
   ],
 }
