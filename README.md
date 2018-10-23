@@ -4,6 +4,8 @@
   </a>
 </p>
 
+<hr/>
+
 Built using Gatsby, Contentful & hosted with Netlify.
 
 More soon...
