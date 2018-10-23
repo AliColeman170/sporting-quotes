@@ -8,7 +8,7 @@ import QuoteLink from './quoteLink'
 
 const BackgroundImage = styled('div')`
   grid-row-start: 1;
-  grid-row-end: 5;
+  grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 9;
   background-image: ${({url}) => 'url('+url+')'};

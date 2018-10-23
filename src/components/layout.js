@@ -5,11 +5,12 @@ import styled from "react-emotion"
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from '../components/header'
+import Footer from '../components/footer'
 import './layout.css'
 
 const Grid = styled('div')`
   display: grid;
-  grid-template-rows: 72px 300px 1fr 72px;
+  grid-template-rows: 72px 300px 1fr 48px 44px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   min-height: 100vh;
 `
@@ -46,6 +47,7 @@ const Layout = ({ children, alt }) => (
         <Grid>
           <Header siteTitle={data.site.siteMetadata.title} alt={alt || false} />
           {children}
+          <Footer />
         </Grid>
       </>
     )}
