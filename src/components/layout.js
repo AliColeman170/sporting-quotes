@@ -47,7 +47,7 @@ const Layout = ({ children, alt }) => (
         <Grid>
           <Header siteTitle={data.site.siteMetadata.title} alt={alt || false} />
           {children}
-          <Footer />
+          <Footer alt={alt || false} />
         </Grid>
       </>
     )}

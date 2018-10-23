@@ -40,9 +40,7 @@ const Header = ({ siteTitle, alt }) => (
           `} />
       </Link>
     </h1>
-    {alt ? 
-      <Link to="/quotes" className={css`color: #fff;text-decoration: none;`}>Browse All</Link> : <Link to="/" className={css`color: #32353c;text-decoration: none;font-size:1.2rem;`}><FAIcon icon="home" /></Link>}
-    
+    {alt ? <Link to="/quotes" className={css`color: #fff;text-decoration: none;`}>Browse All</Link> : <Link to="/" className={css`color: #32353c;text-decoration: none;font-size:1.2rem;`}><FAIcon icon="home" /></Link>}
   </Topbar>
 )
 

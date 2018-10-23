@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion'
 
 import FAIcon from './faIcon'
 
@@ -15,15 +15,18 @@ const FooterWrapper = styled('footer')`
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
-  color: #fff;
 `
 
-const Footer = () => (
+const GitLink = styled('a')`
+  color: ${({alt}) => (alt ==='true') ? '#fff' : '#32353c' }
+`
+
+const Footer = ({alt}) => (
   <FooterWrapper>
-    <a 
+    <GitLink 
       href="https://github.com/AliColeman170/sporting-quotes" 
       title="Sporting Quotes on Github"
-      className={css`color:#fff;`}><FAIcon icon="github" /></a>
+      alt={alt.toString()}><FAIcon icon="github" /></GitLink>
   </FooterWrapper>
 )
 

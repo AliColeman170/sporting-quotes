@@ -62,7 +62,6 @@ class Quotes extends Component {
             { name: 'og:image', content: 'https://images.ctfassets.net/xyhqjsnzuimo/3A1GAnJAYEcqoQYcA6IM4Y/0da41eb484abf0a4895efbf8c3bac596/gettyimages-482857506.jpg' },
             { name: 'og:url', content: (this.state.page === '1') ? `${process.env.GATSBY_ROOT_URL}/quotes` : `${process.env.GATSBY_ROOT_URL}/quotes/${this.state.page}` },
             { name: 'twitter:image:alt', content: 'Sporting Quotes' },
-  
           ]}
         />
         <ListWrapper>
