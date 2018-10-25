@@ -2,6 +2,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://www.sportingquotes.com`,
     title: 'Sporting Quotes – Quotes to remember. Quotes to inspire. Quotes to make you dream.',
     description: 'Browse and share famous sporting quotes from superstars throughout the ages.',
     keywords: 'sporting quotes, quotes, quote, sport, inspiration, famous, superstars, history, dreams, winning'
@@ -37,11 +38,13 @@ module.exports = {
         }
       }
     },
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-amplitude-analytics`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        apiKey: process.env.AMPLITUDE_API_KEY,
+        trackingId: "UA-127958044-1",
         head: false,
+        anonymize: true,
         respectDNT: true,
       },
     },
