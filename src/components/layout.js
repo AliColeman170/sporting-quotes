@@ -40,6 +40,7 @@ const Layout = ({ children, alt }) => (
             { name: 'og:site_name', content: 'Sporting Quotes' },
             { name: 'fb:app_id', content: '1899309746988748' },
             { name: 'twitter:site', content: '@sporting_quote' },
+            { name: 'google-site-verification', content: 'RPPHnJOnAK8ve8bjQ2ECbCHVUY2QpCIw6xzGYmw6Zrs' }
           ]}
         >
           <html lang="en" />
