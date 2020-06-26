@@ -14,15 +14,12 @@ const Blockquote = styled.blockquote`
 const BlockquoteFooter = styled.footer`
   ${tw`text-white italic mt-6 text-base lg:text-xl`}
 `
-
 const QuoteWrapper = styled.div`
   ${tw`relative z-10 flex items-center justify-center mt-6 row-start-2 row-end-4 col-start-2 col-end-8`}
 `
-
 const LinkWrapper = styled.div`
   ${tw`relative z-10 row-start-4 row-end-5 col-start-2 col-end-8 md:col-start-3 md:col-end-7 lg:col-start-4 lg:col-end-6`}
 `
-
 const BackgroundImageDiv = ({ image, className }) => (
   <BackgroundImage
     Tag="div"
@@ -31,7 +28,6 @@ const BackgroundImageDiv = ({ image, className }) => (
     backgroundColor={`#040e18`}
   />
 )
-
 const StyledBackgroundImage = styled(BackgroundImageDiv)`
   ${tw`relative row-start-1 row-end-6 col-start-1 col-end-9 bg-cover bg-center`}
 `
