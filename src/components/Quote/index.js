@@ -1,36 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
-import tw from 'twin.macro'
 import BackgroundImage from 'gatsby-background-image'
 
 import QuoteLink from './QuoteLink'
 
-const Blockquote = styled.blockquote`
-  ${tw`text-white font-serif font-medium text-3xl lg:text-5xl leading-10 lg:leading-tight`}
-  text-shadow: 2px 3px 3px rgba(0,0,0,0.5), 0px -5px 35px rgba(255,255,255,0.3);
-`
-const BlockquoteFooter = styled.footer`
-  ${tw`text-white italic mt-6 text-base lg:text-xl`}
-`
-const QuoteWrapper = styled.div`
-  ${tw`relative z-10 flex items-center justify-center mt-6 row-start-2 row-end-4 col-start-2 col-end-8`}
-`
-const LinkWrapper = styled.div`
-  ${tw`relative z-10 row-start-4 row-end-5 col-start-2 col-end-8 md:col-start-3 md:col-end-7 lg:col-start-4 lg:col-end-6`}
-`
-const BackgroundImageDiv = ({ image, className }) => (
+const Blockquote = ({ children }) => <div className="text-white font-serif font-medium text-3xl lg:text-5xl leading-10 lg:leading-tight text-shadow">{children}</div>
+const BlockquoteFooter = ({ children }) => <footer className="text-white italic mt-6 text-base lg:text-xl">{children}</footer>
+const QuoteWrapper = ({ children }) => <div className="relative z-10 flex items-center justify-center mt-6 row-start-2 row-end-4 col-start-2 col-end-8">{children}</div>
+const LinkWrapper = ({ children }) => <div className="relative z-10 row-start-4 row-end-5 col-start-2 col-end-8 md:col-start-3 md:col-end-7 lg:col-start-4 lg:col-end-6">{children}</div>
+
+const StyledBackgroundImage = ({ image }) => (
   <BackgroundImage
     Tag="div"
-    className={className}
+    className="relative row-start-1 row-end-6 col-start-1 col-end-9 bg-cover bg-center"
     fluid={image}
     backgroundColor={`#040e18`}
   />
 )
-const StyledBackgroundImage = styled(BackgroundImageDiv)`
-  ${tw`relative row-start-1 row-end-6 col-start-1 col-end-9 bg-cover bg-center`}
-`
 
 const QuotePage = ({ quote }) => {
   const imageNo = Math.floor(Math.random() * quote.quotee.images.length)

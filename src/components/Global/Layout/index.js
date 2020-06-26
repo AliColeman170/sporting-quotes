@@ -1,17 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
-import tw from 'twin.macro'
 
 import Header from '../Header'
 import Footer from '../Footer'
 
-const Grid = styled.div`
-  ${tw`grid grid-cols-8 min-h-screen`}
-  grid-template-rows: 80px 300px 1fr 48px 48px;
-`
+const Grid = ({ children }) => <div className="grid grid-cols-8 grid-rows-layout min-h-screen">{children}</div>
 
 const Layout = ({ children, dark = false }) => {
   const { site } = useStaticQuery(graphql`

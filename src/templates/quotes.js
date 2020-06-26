@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
 import { navigate, graphql, Link } from 'gatsby'
-import tw from 'twin.macro'
 
 import Layout from '../components/Global/Layout'
 import Pagination from '../components/Global/Pagination'
 
-const QuotesWrapper = styled.div`
-  ${tw`row-start-2 row-end-5 col-start-1 col-end-9 p-4 md:p-6 my-8 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-7`}
-`
-const H1 = styled.h1`
-  ${tw`font-sans md:text-center text-4xl font-semibold tracking-tight mb-1`}
-`
-const Subheading = styled.p`
-  ${tw`font-serif md:text-center text-xl mb-4 text-gray-500`}
-`
-const StyledLink = styled(Link)`
-  ${tw`block text-lg text-primary truncate underline hover:no-underline`}
-`
-const QuotesList = styled.ul`
-  ${tw`my-6 text-left`}
-`
-const QuotesListItem = styled.li`
-  ${tw`font-serif text-gray-700 leading-8 py-3`}
-`
+const QuotesWrapper = ({ children }) => <div className="row-start-2 row-end-5 col-start-1 col-end-9 p-4 md:p-6 my-8 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-7">{children}</div>
+const H1 = ({ children }) => <h1 className="font-sans md:text-center text-4xl font-semibold tracking-tight mb-1">{children}</h1>
+const Subheading = ({ children }) => <p className="font-serif md:text-center text-xl mb-4 text-gray-500">{children}</p>
+const StyledLink = ({ children, ...props }) => <Link {...props} className="block text-lg text-primary truncate underline hover:no-underline">{children}</Link>
+const QuotesList = ({ children }) => <ul className="my-6 text-left">{children}</ul>
+const QuotesListItem = ({ children }) => <li className="font-serif text-gray-700 leading-8 py-3">{children}</li>
 
 const Quotes = ({ path, pageContext, data }) => {
   const { humanPageNumber, numberOfPages, totalCount } = pageContext

@@ -1,21 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import tw from 'twin.macro'
 import Layout from '../components/Global/Layout'
 import { Link } from 'gatsby'
 
-const NotFoundWrapper = styled.div`
-  ${tw`col-start-1 col-end-9 row-start-2 row-end-5 flex flex-col items-center justify-center`}
-`
-const H1 = styled.h1`
-  ${tw`text-4xl font-semibold`}
-`
-const P = styled.p`
-  ${tw`text-gray-700 mt-4`}
-`
-const StyledLink = styled(Link)`
-  ${tw`text-primary mt-4`}
-`
+const NotFoundWrapper = ({children}) => <div className="col-start-1 col-end-9 row-start-2 row-end-5 flex flex-col items-center justify-center">{children}</div>
+const H1 = ({children}) => <h1 className="text-4xl font-semibold">{children}</h1>
+const P = ({children}) => <p className="text-gray-700 mt-4">{children}</p>
+const StyledLink = ({ children, ...props }) => <Link {...props} className="text-primary mt-4">{children}</Link>
 
 const NotFoundPage = () => (
   <Layout dark>

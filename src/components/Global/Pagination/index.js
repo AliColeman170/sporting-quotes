@@ -1,31 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Link } from 'gatsby';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
-import tw from 'twin.macro'
 
-const PaginationWrapper = styled.div`
-  ${tw`font-sans flex items-center justify-center mt-8`}
-`
-const PageCount = styled.span`
-  ${tw`text-sm px-2`}
-`
-const NumberInput = styled.input`
-  ${tw`form-input inline-block sm:text-sm sm:leading-5`}
-`
-const StyledLink = styled(Link)`
-  ${tw`bg-primary text-white h-8 w-8 flex items-center justify-center rounded-full text-sm`}
-`
-const StyledLinkDisabled = styled.span`
-  ${tw`bg-primary opacity-50 cursor-not-allowed text-white h-8 w-8 flex items-center justify-center rounded-full text-sm`}
-`
-const BackIcon = styled(ChevronLeftIcon)`
-  ${tw`h-6 w-6`}
-`
-const NextIcon = styled(ChevronRightIcon)`
-  ${tw`h-6 w-6`}
-`
+const PaginationWrapper = ({ children }) => <div className="font-sans flex items-center justify-center mt-8">{children}</div>
+const PageCount = ({ children }) => <span className="text-sm px-2">{children}</span>
+const NumberInput = ({ ...props }) => <input {...props} className="form-input inline-block sm:text-sm sm:leading-5" />
+const StyledLink = ({ children, ...props }) => <Link {...props} className="bg-primary text-white h-8 w-8 flex items-center justify-center rounded-full text-sm">{children}</Link>
+const StyledLinkDisabled = ({ children }) => <span className="bg-primary opacity-50 cursor-not-allowed text-white h-8 w-8 flex items-center justify-center rounded-full text-sm">{children}</span>
+const BackIcon = () => <ChevronLeftIcon className="h-6 w-6" />
+const NextIcon = () => <ChevronRightIcon className="h-6 w-6" />
 
 const NavLink = ({ children, url }) => {
   if (url) return <StyledLink to={url}>{children}</StyledLink>

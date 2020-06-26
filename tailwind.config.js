@@ -13,6 +13,9 @@ module.exports = {
       },
       colors: {
         'primary': '#59ba47',
+      },
+      gridTemplateRows: {
+        'layout': '80px 300px 1fr 48px 48px',
       }
     },
   },
