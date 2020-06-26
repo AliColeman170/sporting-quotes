@@ -39,7 +39,10 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage,
       items: data.allContentfulQuote.edges,
       component: path.resolve(`./src/templates/quote.js`),
-      itemToPath: "node.slug",
+      itemToPath: item => {
+        if (!item) return
+        return `/quotes/${item.node.slug}`
+      },
       itemToId: "node.id"
     });
 

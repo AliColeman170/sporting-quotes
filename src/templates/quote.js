@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import QuotePage from '../components/Quote'
 import Layout from '../components/Layout'
 
-const Quote = ({data}) => {
+const Quote = ({ data }) => {
   const quote = data.contentfulQuote
   return (
     <Layout>
@@ -14,8 +14,8 @@ const Quote = ({data}) => {
 }
 
 export const query = graphql`
-  query($id: String!) {
-    contentfulQuote(id: { eq: $id }) {
+  query($pageId: String!) {
+    contentfulQuote(id: { eq: $pageId }) {
       title
       slug
       quotee {
