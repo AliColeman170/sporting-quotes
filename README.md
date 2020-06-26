@@ -8,4 +8,4 @@
 
 Built using Gatsby, Contentful & hosted with Netlify.
 
-More soon...
+Feel free to create a new issue if you would like to see a quote added.

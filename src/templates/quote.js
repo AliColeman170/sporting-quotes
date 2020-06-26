@@ -1,18 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import QuotePage from '../components/quotePage'
+import QuotePage from '../components/Quote'
+import Layout from '../components/Global/Layout'
 
-const Quote = ({data}) => {
+const Quote = ({ data }) => {
   const quote = data.contentfulQuote
   return (
-    <QuotePage quote={quote} />
+    <Layout>
+      <QuotePage quote={quote} />
+    </Layout>
   )
 }
 
 export const query = graphql`
-  query($id: String!) {
-    contentfulQuote(id: { eq: $id }) {
+  query($pageId: String!) {
+    contentfulQuote(id: { eq: $pageId }) {
       title
       slug
       quotee {
@@ -21,8 +24,9 @@ export const query = graphql`
         images {
           file {
             url
-            fileName
-            contentType
+          }
+          fluid(maxWidth: 2000, quality: 95){
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }

@@ -1,128 +1,89 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link';
-import styled, { css } from 'react-emotion'
-import { navigate, graphql } from 'gatsby'
+import { navigate, graphql, Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import Pagination from '../components/pagination'
+import Layout from '../components/Global/Layout'
+import Pagination from '../components/Global/Pagination'
 
-const ListWrapper = styled('div')`
-  grid-row-start: 2;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 9;
-  padding: 1rem;
-  margin: 2rem 0;
-  text-align: center;
-  @media (min-width: 768px) {
-    grid-column-start: 2;
-    grid-column-end: 8;
+const QuotesWrapper = ({ children }) => <div className="row-start-2 row-end-5 col-start-1 col-end-9 p-4 md:p-6 my-8 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-7">{children}</div>
+const H1 = ({ children }) => <h1 className="font-sans md:text-center text-4xl font-semibold tracking-tight mb-1">{children}</h1>
+const Subheading = ({ children }) => <p className="font-serif md:text-center text-xl mb-4 text-gray-500">{children}</p>
+const StyledLink = ({ children, ...props }) => <Link {...props} className="block text-lg text-primary truncate underline hover:no-underline">{children}</Link>
+const QuotesList = ({ children }) => <ul className="my-6 text-left">{children}</ul>
+const QuotesListItem = ({ children }) => <li className="font-serif text-gray-700 leading-8 py-3">{children}</li>
+
+const Quotes = ({ path, pageContext, data }) => {
+  const { humanPageNumber, numberOfPages, totalCount } = pageContext
+  const { site, allContentfulQuote: { edges: quotes } } = data
+
+  const [page, setPage] = useState(pageContext.humanPageNumber)
+
+  const handleChange = (e) => {
+    setPage(e.target.value)
   }
-  @media (min-width: 1024px) {
-    grid-column-start: 3;
-    grid-column-end: 7;
-  }
-`
 
-class Quotes extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: this.props.pageContext.index
+  useEffect(() => {
+    if (page === 1) {
+      navigate(`/quotes`)
+    } else {
+      navigate(`/quotes/${page}`)
     }
-  }
+  }, [page])
 
-  handleChange = (e) => {
-    this.setState({page: e.target.value}, () => {
-      if (this.state.page === '1') {
-        navigate(`/quotes`)
-      } else {
-        navigate(`/quotes/${this.state.page}`)
-      }
-    })
-  }
-
-  render() {
-    const { data, pageContext } = this.props;
-    const { group, index, pageCount, additionalContext } = pageContext;
-    const previousUrl = index - 1 === 1 ? "" : (index - 1).toString();
-    const nextUrl = (index + 1).toString();
-    return (
-      <Layout>
-        <Helmet
-          title={`Page ${this.state.page} – Browse All - Sporting Quotes`}
-          meta={[
-            { name: 'description', content: `Browse all ${additionalContext.totalCount} sporting quotes – page ${this.state.page} of ${pageCount}.` },
-            { name: 'keywords', content: data.site.siteMetadata.keywords },
-            { name: 'og:title', content: `Page ${this.state.page} – Browse All - Sporting Quotes` },
-            { name: 'og:description', content: `Browse all ${additionalContext.totalCount} sporting quotes – page ${this.state.page} of ${pageCount}.` },
-            { name: 'og:image', content: 'https://images.ctfassets.net/xyhqjsnzuimo/3A1GAnJAYEcqoQYcA6IM4Y/0da41eb484abf0a4895efbf8c3bac596/gettyimages-482857506.jpg' },
-            { name: 'og:url', content: (this.state.page === '1') ? `${process.env.GATSBY_ROOT_URL}/quotes` : `${process.env.GATSBY_ROOT_URL}/quotes/${this.state.page}` },
-            { name: 'twitter:image:alt', content: 'Sporting Quotes' },
-          ]}
+  return (
+    <Layout dark>
+      <Helmet
+        title={`Page ${humanPageNumber} – Browse All - Sporting Quotes`}
+        meta={[
+          { name: 'description', content: `Browse all ${totalCount} sporting quotes – page ${humanPageNumber} of ${numberOfPages}.` },
+          { name: 'keywords', content: site.siteMetadata.keywords },
+          { name: 'og:title', content: `Page ${humanPageNumber} – Browse All - Sporting Quotes` },
+          { name: 'og:description', content: `Browse all ${totalCount} sporting quotes – page ${humanPageNumber} of ${numberOfPages}.` },
+          { name: 'og:image', content: 'https://images.ctfassets.net/xyhqjsnzuimo/3A1GAnJAYEcqoQYcA6IM4Y/0da41eb484abf0a4895efbf8c3bac596/gettyimages-482857506.jpg' },
+          { name: 'og:url', content: `${process.env.GATSBY_ROOT_URL}${path}`},
+          { name: 'twitter:image:alt', content: 'Sporting Quotes' },
+        ]}
+      />
+      <QuotesWrapper>
+        <H1>Browse Quotes</H1>
+        <Subheading>{totalCount} Quotes</Subheading>
+        <QuotesList>
+          {quotes.map(({ node }) => (
+            <QuotesListItem key={node.id}>
+              <StyledLink to={`/quotes/${node.slug}`}>
+                  {node.title}
+              </StyledLink>
+              – {node.quotee && node.quotee.title}
+            </QuotesListItem>
+          ))}
+        </QuotesList>
+        <Pagination
+          pageContext={pageContext}
+          handleChange={handleChange}
         />
-        <ListWrapper>
-          <h1 className={css`
-            text-align: center;
-            margin-bottom: 0.75rem;
-          `}>Browse Quotes</h1>
-          <p className={css`
-            font-size: 1.2rem;
-            color: #32353c;
-          `}>{additionalContext.totalCount} Quotes</p>
-          <div className={css`
-            padding: 1rem 0;
-          `}>
-            {group.map(({ node }) => (
-              <div
-                key={node.id}
-                className={css`
-                  padding: 0.75rem 0;
-                  line-height: 1.8em;
-                  color: #32353c;
-                  font-size: 0.95rem;
-                  text-align: left;
-                `}
-              >
-                <Link
-                  to={`quotes/${node.slug}`}
-                  className={css`
-                    display: block;
-                    font-family: 'Lora', serif;
-                    color: #59ba47;
-                    font-size: 1rem;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                  `}
-                  >
-                    {node.title}
-                </Link>
-                – {node.quotee && node.quotee.title}
-              </div>
-            ))}
-          </div>
-          <Pagination
-            next={`/quotes/${nextUrl}`}
-            previous={`/quotes/${previousUrl}`}
-            current={this.state.page}
-            pageCount={pageCount}
-            handleChange={this.handleChange}
-          />
-        </ListWrapper>
-      </Layout>
-    );
-  }
+      </QuotesWrapper>
+    </Layout>
+  )
 }
 
 export const query = graphql`
-  query {
+  query ($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         keywords
+      }
+    }
+    allContentfulQuote(sort: { fields: [title]}, skip: $skip, limit: $limit) {
+      edges {
+        node {
+          id
+          title
+          slug
+          quotee {
+            title
+          }
+        }
       }
     }
   }
