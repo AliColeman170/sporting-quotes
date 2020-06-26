@@ -8,8 +8,8 @@ module.exports = {
     keywords: 'sporting quotes, quotes, quote, sport, inspiration, famous, superstars, history, dreams, winning'
   },
   plugins: [
-    `gatsby-plugin-emotion`,
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -19,7 +19,7 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#ffffff',
         display: 'minimal-ui',
-        icon: 'src/images/sporting-quotes-icon.png'
+        icon: 'src/assets/images/sporting-quotes-icon.png'
       },
     },
     'gatsby-plugin-offline',
@@ -27,7 +27,8 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || ''
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+        downloadLocal: true,
       },
     },
     {

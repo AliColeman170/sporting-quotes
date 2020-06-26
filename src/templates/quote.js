@@ -1,12 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import QuotePage from '../components/quotePage'
+import QuotePage from '../components/Quote'
+import Layout from '../components/Layout'
 
 const Quote = ({data}) => {
   const quote = data.contentfulQuote
   return (
-    <QuotePage quote={quote} />
+    <Layout>
+      <QuotePage quote={quote} />
+    </Layout>
   )
 }
 
@@ -21,8 +24,9 @@ export const query = graphql`
         images {
           file {
             url
-            fileName
-            contentType
+          }
+          fluid(maxWidth: 2000, quality: 95){
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
