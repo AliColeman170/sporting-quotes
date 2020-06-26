@@ -7,9 +7,9 @@ import QuoteLink from './QuoteLink'
 
 const Blockquote = ({ children }) => <div className="text-white font-serif font-medium text-3xl lg:text-5xl leading-10 lg:leading-tight text-shadow">{children}</div>
 const BlockquoteFooter = ({ children }) => <footer className="text-white italic mt-6 text-base lg:text-xl">{children}</footer>
-const QuoteWrapper = ({ children }) => <div className="relative z-10 flex items-center justify-center mt-6 row-start-2 row-end-4 col-start-2 col-end-8">{children}</div>
-const LinkWrapper = ({ children }) => <div className="relative z-10 row-start-4 row-end-5 col-start-2 col-end-8 md:col-start-3 md:col-end-7 lg:col-start-4 lg:col-end-6">{children}</div>
-
+const QuoteWrapper = ({ children }) => <div className="relative z-20 flex items-center justify-center mt-6 row-start-2 row-end-4 col-start-2 col-end-8">{children}</div>
+const LinkWrapper = ({ children }) => <div className="relative z-20 row-start-4 row-end-5 col-start-2 col-end-8 md:col-start-3 md:col-end-7 lg:col-start-4 lg:col-end-6">{children}</div>
+const BackgroundImageOverlay = ({ children }) => <div className="relative z-10 row-start-1 row-end-6 col-start-1 col-end-9 bg-black bg-opacity-25">{children}</div>
 const StyledBackgroundImage = ({ image }) => (
   <BackgroundImage
     Tag="div"
@@ -34,6 +34,7 @@ const QuotePage = ({ quote }) => {
           { name: 'twitter:image:alt', content: `${quote.quotee.title}` },
         ]}
       />
+      <BackgroundImageOverlay />
       <StyledBackgroundImage image={quote.quotee.images[imageNo].fluid} />
       <QuoteWrapper>
         <Blockquote>
