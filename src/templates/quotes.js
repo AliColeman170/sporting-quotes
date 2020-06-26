@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { navigate, graphql, Link } from 'gatsby'
 import tw from 'twin.macro'
 
-import Layout from '../components/Layout'
+import Layout from '../components/Global/Layout'
 import Pagination from '../components/Global/Pagination'
 
 const QuotesWrapper = styled.div`

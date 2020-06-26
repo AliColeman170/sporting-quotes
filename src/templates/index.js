@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import QuotePage from '../components/Quote'
-import Layout from '../components/Layout'
+import Layout from '../components/Global/Layout'
 
 const IndexPage = ({data}) => {
   const quote = data.allContentfulQuote.edges[0].node

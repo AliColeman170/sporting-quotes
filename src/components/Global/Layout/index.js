@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import tw from 'twin.macro'
 
-import Header from '../components/Global/Header'
-import Footer from '../components/Global/Footer'
+import Header from '../Header'
+import Footer from '../Footer'
 
 const Grid = styled.div`
   ${tw`grid grid-cols-8 min-h-screen`}
