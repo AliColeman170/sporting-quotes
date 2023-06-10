@@ -33,7 +33,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.4",
     "dotenv": "^6.1.0",
-    "gatsby": "^2.23.11",
+    "gatsby": "^4.25.7",
     "gatsby-cli": "^2.12.51",
     "prettier": "^1.14.2",
     "react": "^16.13.1",
@@ -44,7 +44,7 @@
     "url": "https://github.com/AliColeman170/sporting-quotes"
   },
   "peerDependencies": {
-    "gatsby": "^2.23.11",
+    "gatsby": "^4.25.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
